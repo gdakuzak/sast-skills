@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "sast-skills",
+  "description": "SAST skills for Claude Code",
+  "owner": {
+    "name": "Guilherme Makoto",
+    "email": "makoto@rocketti.com.br"
+  },
+  "plugins": [
+    {
+      "name": "sast",
+      "description": "Run a SAST assessment on the current project: /sast:sast-scan",
+      "source": "./",
+      "category": "security"
+    }
+  ]
+}

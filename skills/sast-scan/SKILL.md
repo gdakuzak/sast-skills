@@ -1,6 +1,18 @@
+---
+name: sast-scan
+description: >-
+  Run a full SAST security assessment on the project in the current working
+  directory: codebase analysis, all vulnerability checks in parallel subagents,
+  and a consolidated report in sast/final-report.md. Resumes from existing
+  sast/ files. Use when asked to "run vulnerability scan", "find vulnerabilities",
+  "security assessment" or "/sast:sast-scan".
+---
+
 # SAST Security Assessment
 
-Your goal is to identify security vulnerabilities in the codebase located in the current directory.
+Your goal is to identify security vulnerabilities in the codebase located in the current working directory (the project the user is in). All output goes to `sast/` at that project root.
+
+Skills from this plugin are namespaced: invoke them as `sast:<skill>` (e.g. `sast:sast-sqli`). Tell each subagent the full namespaced name.
 
 ---
 
@@ -8,7 +20,7 @@ Your goal is to identify security vulnerabilities in the codebase located in the
 
 Before running, check if `sast/architecture.md` already exists. If it does, skip this step.
 
-Run the sast-analysis skill directly (this one stays in-session since later steps depend on reading its output).
+Run the `sast:sast-analysis` skill directly (this one stays in-session since later steps depend on reading its output).
 
 **Wait for this step to finish before proceeding.**
 
@@ -67,3 +79,9 @@ Skip this step if `sast/final-report.md` already exists.
 Launch a single subagent:
 
 > Read all available `sast/*-results.md` files and `sast/architecture.md` for context, then run the sast-report skill to generate `sast/final-report.md` with all findings ranked by severity and confidentiality impact.
+
+---
+
+## Step 4: Wrap up
+
+Tell the user where the report is (`sast/final-report.md`) with a short severity count, and suggest adding `sast/` to `.gitignore` if it isn't there.
