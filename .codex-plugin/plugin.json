@@ -1,0 +1,20 @@
+{
+  "name": "sast",
+  "version": "1.0.0",
+  "description": "LLM-driven SAST: analysis, 14 vulnerability checks in parallel and a consolidated report, run on the current project",
+  "author": {
+    "name": "Guilherme Makoto",
+    "email": "makoto@rocketti.com.br"
+  },
+  "repository": "https://github.com/gdakuzak/sast-skills",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SAST",
+    "shortDescription": "Security assessment of the current project",
+    "developerName": "Guilherme Makoto",
+    "category": "Security",
+    "capabilities": ["Instructions"],
+    "defaultPrompt": ["Run vulnerability scan on this project."]
+  }
+}
