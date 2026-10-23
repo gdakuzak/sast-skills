@@ -2,7 +2,7 @@
 
 A collection of agent skills that turn your LLM coding assistant into a fully functional SAST scanner to find vulnerabilities in your codebase. Works natively with Claude Code, Codex, Opencode, Cursor and any other assistant that supports agent skills. No third-party tools required.
 
-Claude Code with Opus model is recommended. But if the cost is a concern, use any IDE and model you trust.
+The main goal of this project is to find as many vulnerabilities as possible at the lowest possible cost.
 
 ![Process in Claude Code](demo.gif)
 
