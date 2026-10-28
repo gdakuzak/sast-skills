@@ -104,3 +104,22 @@ All output is written to a `sast/` folder in your project root:
 | `sast/architecture.md` | Technology stack, architecture, entry points, data flows |
 | `sast/*-results.md` | Per-vulnerability-class findings with proof and remediation |
 | `sast/final-report.md` | Consolidated report ranked by severity |
+
+## Releases
+
+Current version: **v1.0.0**. See [GitHub Releases](https://github.com/gdakuzak/sast-skills/releases) for all versions. Versioning follows [SemVer](https://semver.org/).
+
+## Changelog
+
+### v1.0.0
+
+Changes compared to the upstream project:
+
+- Packaged the skills as a Claude Code plugin (`.claude-plugin`), installable via `/plugin marketplace add`
+- Added Codex (`.codex-plugin`) and Cursor (`.cursor-plugin`) plugin manifests
+- Moved the skills from `sast-files/.claude/skills` to `skills/`; the `CLAUDE.md` orchestrator became the `sast-scan` skill
+- Updated the installation and update instructions for each assistant
+
+## Credits
+
+This is a fork of [utkusen/sast-skills](https://github.com/utkusen/sast-skills) by [Utku Sen](https://github.com/utkusen), licensed under MIT. All vulnerability detection skills come from the original project.
