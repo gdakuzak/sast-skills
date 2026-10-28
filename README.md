@@ -8,11 +8,11 @@ Claude Code with Opus model is recommended. But if the cost is a concern, use an
 
 ## How It Works
 
-`CLAUDE.md` (for Claude Code) or `AGENTS.md` (for Opencode and other IDEs) orchestrates the entire assessment workflow automatically. The assessment runs in three steps:
+The `sast-scan` skill (Claude Code plugin) or `AGENTS.md` (Opencode and other IDEs) orchestrates the entire assessment workflow automatically. The assessment runs in three steps:
 
 1. **Codebase Analysis** -- The `sast-analysis` skill maps the technology stack, architecture, entry points, data flows, and trust boundaries. It writes its findings to `sast/architecture.md`.
 
-2. **Vulnerability Detection (parallel)** -- All 13 vulnerability detection skills run in parallel as subagents. Each skill follows a two-phase approach: first a recon/discovery phase to find candidate sections, then a verification phase to confirm exploitability. Results are written to `sast/*-results.md`.
+2. **Vulnerability Detection (parallel)** -- All 14 vulnerability detection skills run in parallel as subagents. Each skill follows a two-phase approach: first a recon/discovery phase to find candidate sections, then a verification phase to confirm exploitability. Results are written to `sast/*-results.md`.
 
 3. **Report Generation** -- The `sast-report` skill consolidates all findings into a single `sast/final-report.md`, ranked by severity with full remediation guidance and dynamic test instructions.
 
@@ -39,26 +39,34 @@ Claude Code with Opus model is recommended. But if the cost is a concern, use an
 
 ## Installation
 
-Copy your project into the `sast-files` folder, then open `sast-files` as your workspace in your AI coding assistant.
+### Claude Code (plugin, recommended)
+
+Install once, then run it from inside any project — no copying needed:
+
+```bash
+/plugin marketplace add gdakuzak/sast-skills      # or a local path to this repo
+/plugin install sast@sast-skills
+```
+
+Then, in the project you want to assess:
+
+> /sast:sast-scan
+
+or just ask "Run vulnerability scan". Individual checks can be run on their own too (e.g. `/sast:sast-sqli`), after `/sast:sast-analysis`.
+
+It skips any step whose output file already exists, so you can safely re-run it after fixing issues. Add `sast/` to your `.gitignore`.
+
+### Other assistants (Codex, Opencode, Cursor...)
+
+Copy your project into the `sast-files` folder, then open `sast-files` as your workspace. `AGENTS.md` orchestrates the workflow using the skills in `sast-files/.agents/skills`.
 
 ```bash
 cp -r /path/to/your/project sast-files/
 ```
 
-> **Note:** If your project already contains a `CLAUDE.md` or `AGENTS.md` file, remove it before running the assessment — otherwise it will conflict with the orchestration file provided by this toolkit.
+> **Note:** If your project already contains an `AGENTS.md` file, remove it before running the assessment.
 
-
-## Usage
-
-After copying the files, open your project in your AI coding assistant and ask:
-
-> Run vulnerability scan
-
-or
-
-> Find vulnerabilities in this codebase
-
-The entry point file (`CLAUDE.md` or `AGENTS.md`) orchestrates the full workflow automatically. It will skip any steps whose output files already exist, so you can safely re-run it after fixing issues.
+Then ask "Run vulnerability scan".
 
 ## Output
 
