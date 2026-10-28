@@ -56,7 +56,24 @@ or just ask "Run vulnerability scan". Individual checks can be run on their own 
 
 It skips any step whose output file already exists, so you can safely re-run it after fixing issues. Add `sast/` to your `.gitignore`.
 
-### Other assistants (Codex, Opencode, Cursor...)
+### Codex
+
+```bash
+codex plugin marketplace add gdakuzak/sast-skills
+codex plugin add sast@sast-skills
+```
+
+Then, inside your project, run `codex` and ask "Run vulnerability scan" (or invoke the `sast-scan` skill).
+
+### Cursor
+
+```bash
+git clone https://github.com/gdakuzak/sast-skills ~/.cursor/plugins/local/sast
+```
+
+Run **Developer: Reload Window**, then in your project ask "Run vulnerability scan". For the CLI: `cursor-agent --plugin-dir ~/.cursor/plugins/local/sast`.
+
+### Other assistants (Opencode...)
 
 Copy your project into the `sast-files` folder, then open `sast-files` as your workspace. `AGENTS.md` orchestrates the workflow using the skills in `sast-files/.agents/skills`.
 
@@ -67,6 +84,16 @@ cp -r /path/to/your/project sast-files/
 > **Note:** If your project already contains an `AGENTS.md` file, remove it before running the assessment.
 
 Then ask "Run vulnerability scan".
+
+## Update
+
+| Assistant | Command |
+|---|---|
+| Claude Code | `claude plugin marketplace update sast-skills && claude plugin update sast@sast-skills`, then restart |
+| Cursor | `git -C ~/.cursor/plugins/local/sast pull`, then **Developer: Reload Window** |
+| Codex | See `codex plugin --help`; re-running `codex plugin add sast@sast-skills` also works |
+
+> **Maintainers:** bump `version` in `.claude-plugin/plugin.json`, `.codex-plugin/plugin.json` and `.cursor-plugin/plugin.json` on every release, otherwise clients won't see the update.
 
 ## Output
 

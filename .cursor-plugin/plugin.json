@@ -1,0 +1,11 @@
+{
+  "name": "sast",
+  "displayName": "SAST",
+  "description": "LLM-driven SAST: analysis, 14 vulnerability checks in parallel and a consolidated report, run on the current project",
+  "version": "1.0.0",
+  "author": {
+    "name": "Guilherme Makoto",
+    "email": "makoto@rocketti.com.br"
+  },
+  "skills": "./skills/"
+}

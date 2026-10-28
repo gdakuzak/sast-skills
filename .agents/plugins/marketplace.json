@@ -1,0 +1,21 @@
+{
+  "name": "sast-skills",
+  "interface": {
+    "displayName": "SAST Skills"
+  },
+  "plugins": [
+    {
+      "name": "sast",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/gdakuzak/sast-skills.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Security"
+    }
+  ]
+}
