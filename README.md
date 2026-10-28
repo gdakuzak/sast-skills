@@ -107,9 +107,14 @@ All output is written to a `sast/` folder in your project root:
 
 ## Releases
 
-Current version: **v1.0.0**. See [GitHub Releases](https://github.com/gdakuzak/sast-skills/releases) for all versions. Versioning follows [SemVer](https://semver.org/).
+Current version: **v1.0.1**. See [GitHub Releases](https://github.com/gdakuzak/sast-skills/releases) for all versions. Versioning follows [SemVer](https://semver.org/).
 
 ## Changelog
+
+### v1.0.1
+
+- README: synced the project goal statement from upstream
+- README: added Releases, Changelog and Credits sections
 
 ### v1.0.0
 
